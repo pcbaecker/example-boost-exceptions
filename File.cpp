@@ -24,5 +24,9 @@ void File::read(FILE *pFileptr, std::string &) {
     int returnCodeFromRead = -1;
 
     // Throw the exception with our special return code
-    BOOST_THROW_EXCEPTION(FileReadException() << FileErrorInfoReturnCode(returnCodeFromRead));
+    BOOST_THROW_EXCEPTION(
+            FileReadException()
+            << FileErrorInfoReturnCode(returnCodeFromRead)
+            << FileErrorInfoStacktrace(boost::stacktrace::stacktrace())
+            );
 }

@@ -1,7 +1,16 @@
 #ifndef EXAMPLE_BOOST_EXCEPTIONS_FILE_H
 #define EXAMPLE_BOOST_EXCEPTIONS_FILE_H
 
+// On mac we need to define this macro to use stacktrace
+#define BOOST_STACKTRACE_GNU_SOURCE_NOT_REQUIRED
+
+#include <boost/stacktrace.hpp>
 #include <boost/exception/all.hpp>
+
+/**
+ * @brief The error info for the stacktrace.
+ */
+typedef boost::error_info<struct Stacktrace, boost::stacktrace::stacktrace> FileErrorInfoStacktrace;
 
 /**
  * @brief The error info object containing the filename.
